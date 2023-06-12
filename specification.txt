@@ -1,0 +1,46 @@
+Kell:
+
+.figyelmeztet, hogy el kell végeznem a feladatot. (Email letöltés manuális lesz)
+			- bash / cron job
+
+OK . végig végig nézi az email-eket.
+. Ellenőrzi, hogy az adott email már benne van-e az adatbazásiban.
+. légrehoz egy common.txt az össze talált számlából.
+.common.txt-be végig menni:
+	- szétbontani levelekre
+	- ellenőrizni, valamilyen "Számla azonosító" alapján, hogy egy levelé benne van-e DB-ben.
+		+ Ha nincs: kíírni egy új file-ba.
+		 + Ellenőrizni a következőket: (Note: ezek lesznek a field-ek a DB-ben
+				+ A tranzakció adatai:
+					ID (iter)
+					Számlakibocsátó: 		FŐTÁV Zrt.
+					Tranzakció azonosító: 	129399076
+					Számla kelte: 				2020.12.14
+					Dátum: 							2020.12.18
+					Összeg: 							19276 Ft
+					Ügyfélazonosító: 			30007506
+					Számlaszám: 				3310702882 	 (varchar32)
+					SimplePay tranzakció azonosító:  null (?)
+					Eredeti_Szamla_lementve: Yes
+
+					Mi van akkor, ha egy db emal-hez, amihez egy db tranzakció azonosító
+					tartozik, több Számlaszám van, lásd: ta. 131687503
+
+		+ Felvenni az adatbázisba
+
+
+
+. figyelmezetet, ha az email formátum nem megfelelő az általános for	mátumnak. (adat vesztés elkerülése)
+	Mail-ben csatolva elküldi nekem az adott emailt. EZ MEHETE A  csináltat egy Dump-ot és elküldi email-ben
+
+. kapcsolatot létesít a megfelelő MySQl adatbázissal.
+
+. ellenőrzi, hogy egy adott azonosító benne van a DB-ben.
+
+. amennyiben nincs, akkor INSERT INTO script
+
+. csináltat egy Dump-ot és elküldi email-ben
+
+. main script
+
+.__init__-be kell rakni valamit?
