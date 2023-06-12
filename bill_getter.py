@@ -1,17 +1,14 @@
 """
-
+Goal: get all bill .pdf files from the site
 """
-import datetime
-
-from os import path
 import configparser
-from os import getlogin
 from os.path import join, exists
 from os import makedirs
+from os import getlogin
 from time import sleep
 from datetime import date
 # coloroma import and initalization
-from colorama import init, Fore
+from colorama import init
 init()
 
 from selenium import webdriver
@@ -191,23 +188,30 @@ def get_info(ini_path, section, key):
     value = Key[key]
     return value
 
+# ===================================================================
+# =================  Main part starts here  =========================
+# ===================================================================
+
 ini_path = r'./bill_getter.ini'
-base_folder_path = r"/home/zsolt/Desktop/Dijnet/DijnetSzamlak_{}-ig".format(date.today())
-# ini_path = r'C:\Users\A87484215\PycharmProjects\IndividualScripts\IndividualScripts\billingProvider\billingProvider.ini'   # for console run
 url_path = r"https://www.dijnet.hu/"
+# ini_path = r'C:\Users\A87484215\PycharmProjects\IndividualScripts\IndividualScripts\billingProvider\billingProvider.ini'   # for console run
 
-# from os import makedirs
-#
-# if not path.exists(base_folder_path):
-#     makedirs(base_folder_path)
-
-"""get login_name / set driver path"""
+# todo: get the path for the Work and Win machine too.
+# todo: correct the bill_getter.ini with the above mentioned paths.
 user = getlogin()
+""" set driver path and basefolder path """
+if user == 'zsolt':
+    base_folder_path = r"/home/zsolt/Desktop/Dijnet/DijnetSzamlak_{}-ig".format(date.today())
+    driver_path = get_info(ini_path, 'chromeDriver', user)
+# elif user == 'zsolt':
+#     base_folder_path = r"".format(date.today())
+# else:
+#     base_folder_path = r"".format(date.today())
 print("User: ", user)
-driver_path = get_info(ini_path, 'chromeDriver', user)
 print("driver path: ", driver_path)
-login_user = get_info(ini_path, 'userInfo', "user")
+
 login_passwd = get_info(ini_path, 'userInfo', "passwd")
+login_user = get_info(ini_path, 'userInfo', "user")
 
 if __name__ == "__main__":
     my_instance = BillDownloader(url_path, driver_path, login_user, login_passwd, base_folder_path)
