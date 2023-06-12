@@ -1,6 +1,7 @@
 """
-Goal: get all bill .pdf files from the site
+                    Goal: get all bill .pdf files from the site
 """
+
 import configparser
 from os.path import join, exists
 from os import makedirs
@@ -23,6 +24,13 @@ from selenium.webdriver.common.action_chains import ActionChains
 
 
 # ======================================  CLASS STARTER  ===============================================================
+
+
+# todo: add the following grep command to check if the bill is already downloaded
+# todo: according to the Számlaszám e.g 121100321463
+# todo: make a method to check this.
+# todo: instead of allways creating new folders like e.g. DijnetSzamlak_2023-06-12-ig there should be only one file
+# todo: that is always updated. + a .txt file should be created and then updated that keeps track when was this done.
 
 class BillDownloader(object):
     """ Class for handling the bill download """
